@@ -1,4 +1,4 @@
-PLATFORMS = linux/amd64,linux/arm64,linux/arm/v7,linux/i386
+PLATFORMS = linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7,linux/i386
 VERSION = $(shell cat VERSION)
 WEBPROC_VERSION=0.3.3
 BINFMT = a7996909642ee92942dcd6cff44b9b95f08dad64
@@ -31,7 +31,7 @@ build:
 			--build-arg VCS_URL=$(shell git config --get remote.origin.url) \
 			--build-arg WEBPROC_VERSION=$(WEBPROC_VERSION)
 			--build-arg VERSION=$(VERSION) \
-			--platform $(PLATFORMS) .
+			--platform $(PLATFORMS) \
 			--push \
 			-t $(REPO):$(TAG) .
 	@docker logout
